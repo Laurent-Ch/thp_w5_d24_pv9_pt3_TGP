@@ -6,7 +6,7 @@ Dm.destroy_all
 JoinTagGossip.destroy_all
 JoinUserDm.destroy_all
 
-# City
+# Cities
 10.times do
   City.create(
     name:Faker::Address.city, 
@@ -19,7 +19,7 @@ cities_array = City.all
 10.times do |i|
   rand_fname = Faker::Name.unique.first_name
   rand_lname = Faker::Name.unique.last_name
-  User.create(
+  User.create!(
     first_name: rand_fname,
     last_name: rand_lname,
     description: Faker::Lorem.sentence(word_count: 4),
@@ -30,9 +30,9 @@ cities_array = City.all
 end
 users_array = User.all
 
-# Gossip
+# Gossips
 20.times do |i|
-  Gossip.create(
+  Gossip.create!(
     title:"Potin n°#{i}",
     content:Faker::ChuckNorris.fact,
     user:users_array[rand(0..9)]
@@ -40,9 +40,9 @@ users_array = User.all
 end
 gossips_array = Gossip.all
 
-# Tag 
+# Tags
 10.times do
-  Tag.create(
+  Tag.create!(
     title: Faker::SlackEmoji.unique.people
   )
 end
@@ -59,12 +59,19 @@ Gossip.all.each do |each_gossip|
   end
 end
 
-# Création de messages privés
+# Direct Messages
 10.times do
   Dm.create(
     content: Faker::Quote.yoda, 
     sender: users_array[rand(0...users_array.length)],
-    recipient: users_array[rand(0...users_array.length)]
+  )
+end
+dm_array = Dm.all
+
+# Join table users and dms
+20.times do
+  join_user_dms = JoinUserDm.create!(
+    dm: dm_array[rand(0...dm_array.length)], recipient: users_array[rand(0...users_array.length)]
   )
 end
 
@@ -78,8 +85,7 @@ end
 end
 comment_array = Comment.all
 
-
-# Like
+# Likes
 20.times do
   coin = rand(1..2)
   if coin == 1

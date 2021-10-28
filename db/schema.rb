@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_10_28_201733) do
   end
 
   create_table "join_user_dms", force: :cascade do |t|
-    t.integer "recipient_id"
     t.integer "dm_id"
+    t.integer "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dm_id"], name: "index_join_user_dms_on_dm_id"
