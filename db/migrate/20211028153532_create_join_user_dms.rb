@@ -1,3 +1,5 @@
+# En travaux
+=begin
 class CreateJoinUserDms < ActiveRecord::Migration[5.2]
   def change
     create_table :join_user_dms do |t|
@@ -8,3 +10,5 @@ class CreateJoinUserDms < ActiveRecord::Migration[5.2]
     end
   end
 end
+
+=end
