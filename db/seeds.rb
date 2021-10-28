@@ -76,5 +76,15 @@ end
     user: users_array[rand(0..9)]
   )
 end
+comment_array = Comment.all
+
 
 # Like
+20.times do
+  coin = rand(1..2)
+  if coin == 1
+    Like.create(gossip: gossips_array[rand(0..19)])
+  else
+    Like.create(comment: comment_array[rand(0..19)])
+  end
+end
