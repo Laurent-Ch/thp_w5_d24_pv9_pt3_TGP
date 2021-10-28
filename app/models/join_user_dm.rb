@@ -1,0 +1,2 @@
+class JoinUserDm < ApplicationRecord
+end
