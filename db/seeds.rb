@@ -67,3 +67,14 @@ end
     recipient: users_array[rand(0...users_array.length)]
   )
 end
+
+# Comments
+20.times do
+  Comment.create(
+    content: Faker::Books::Dune.quote,
+    gossip: gossips_array[rand(0..19)],
+    user: users_array[rand(0..9)]
+  )
+end
+
+# Like
